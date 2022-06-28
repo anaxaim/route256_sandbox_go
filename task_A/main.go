@@ -1,14 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 func main() {
-	var t int
-	fmt.Scan(&t)
+	in := bufio.NewReader(os.Stdin)
+	out := bufio.NewWriter(os.Stdout)
+	defer out.Flush()
 
-	for i := 1; i < t; i++ {
+	var t int
+	fmt.Fscan(in, &t)
+
+	for i := 0; i < t; i++ {
 		var s1, s2 int
-		fmt.Scan(&s1, &s2)
-		fmt.Println(s1 + s2)
+		fmt.Fscan(in, &s1, &s2)
+		fmt.Fprintln(out, s1+s2)
 	}
 }
